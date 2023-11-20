@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interconnected Sliders</title>
+<script>
+  window.onload = function() {
+    var sliders = document.getElementsByClassName('sync-slider');
+    var updateSliders = function(sender) {
+      for(var i = 0; i < sliders.length; i++) {
+        if(sliders[i] !== sender) {
+          sliders[i].value = sender.value;
+        }
+      }
+    };
+
+    for(var i = 0; i < sliders.length; i++) {
+      sliders[i].oninput = function() {
+        updateSliders(this);
+      };
+    }
+  };
+</script>
+</head>
+<body>
+  <div id="slider-container">
+    <input type="range" min="0" max="9" value="0" class="sync-slider">
+    <input type="range" min="0" max="9" value="0" class="sync-slider">
+    <input type="range" min="0" max="9" value="0" class="sync-slider">
+    <!-- Add additional sliders here -->
+    <!-- Make sure to have ten sliders for your requirement -->
+  </div>
+</body>
+</html>
